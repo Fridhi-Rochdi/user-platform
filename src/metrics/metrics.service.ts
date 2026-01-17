@@ -75,7 +75,7 @@ export class MetricsService {
     const uptimeSeconds = Math.floor((Date.now() - this.startTime) / 1000);
 
     let output = '';
-    
+
     // Total requests
     output += `# HELP http_requests_total Total number of HTTP requests\n`;
     output += `# TYPE http_requests_total counter\n`;
@@ -84,7 +84,9 @@ export class MetricsService {
     // Requests by method
     output += `# HELP http_requests_by_method HTTP requests by method\n`;
     output += `# TYPE http_requests_by_method counter\n`;
-    for (const [method, count] of Object.entries(this.metrics.requestsByMethod)) {
+    for (const [method, count] of Object.entries(
+      this.metrics.requestsByMethod,
+    )) {
       output += `http_requests_by_method{method="${method}"} ${count}\n`;
     }
     output += `\n`;

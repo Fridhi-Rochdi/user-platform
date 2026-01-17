@@ -12,13 +12,10 @@ async function bootstrap() {
   });
 
   app.useGlobalFilters(
-    new ValidationExceptionFilter(), 
-    new GlobalExceptionFilter(), 
+    new ValidationExceptionFilter(),
+    new GlobalExceptionFilter(),
   );
-  app.useGlobalInterceptors(
-    new TracingInterceptor(), 
-    new LoggingInterceptor(),
-  );
+  app.useGlobalInterceptors(new TracingInterceptor(), new LoggingInterceptor());
 
   const port = process.env.PORT || 3000;
   await app.listen(port);
